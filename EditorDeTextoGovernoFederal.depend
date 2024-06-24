@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1719256644 source:c:\users\breno duarte\documents\github\estruturadedadosc\manipulandoarquivos\editordetextogovernofederal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+
