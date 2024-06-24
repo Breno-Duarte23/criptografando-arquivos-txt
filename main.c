@@ -48,7 +48,7 @@ char* gerar_nome(int min_length, int max_length) {
 }
 
 void gravar_texto(const char *filename) {
-    FILE *file = fopen(filename, "w"); // Abrindo em modo de escrita (limpa o arquivo)
+    FILE *file = fopen(filename, "w");
     if (!file) {
         fprintf(stderr, "Erro ao abrir o arquivo.\n");
         exit(EXIT_FAILURE);
@@ -68,7 +68,7 @@ void gravar_texto(const char *filename) {
 }
 
 void descriptografar_txt(const char *filename, char key) {
-    criptografar_txt(filename, key); // A criptografia XOR é reversível com a mesma chave
+    criptografar_txt(filename, key);
     printf("Texto descriptografado!!\n");
 }
 
@@ -83,7 +83,7 @@ void ler_e_descriptografar_arquivo(const char *filename, char key) {
 
     int c;
     while ((c = fgetc(file)) != EOF) {
-        putchar(c ^ key); // Descriptografa o caractere antes de exibi-lo
+        putchar(c ^ key);
     }
 
     fclose(file);
@@ -161,7 +161,7 @@ int main() {
         printf("5- Adicionar texto ao arquivo\n");
         printf("\n-------------------\n");
         scanf("%d", &opcao);
-        getchar(); // Limpa o buffer de entrada após scanf
+        getchar();
 
         switch(opcao){
             case 0:
@@ -173,26 +173,26 @@ int main() {
                 printf("Guarde o nome do seu arquivo, pois será necessário para abri-lo futuramente!!!\n");
                 gravar_texto(nome_arquivo);
                 criptografar_txt(nome_arquivo, key);
-                free(nome_arquivo); // Libera a memória alocada para o nome do arquivo
+                free(nome_arquivo);
                 break;
             }
             case 2: {
                 printf("Digite o nome do arquivo que deseja abrir: ");
                 char nome_arquivo_para_abrir[1024];
                 scanf("%1023s", nome_arquivo_para_abrir);
-                getchar(); // Limpa o buffer de entrada após scanf
+                getchar();
                 ler_e_descriptografar_arquivo(nome_arquivo_para_abrir, key);
                 break;
             }
             case 3: {
-                printf("Arquivo salvo\n");
+                printf("Arquivo salvo\n"); // Todos os nossos métodos salvam o arquivo ao finalizar sua execução
                 break;
             }
             case 4: {
                 printf("Digite o nome do arquivo que deseja editar: ");
                 char nome_arquivo_para_editar[1024];
                 scanf("%1023s", nome_arquivo_para_editar);
-                getchar(); // Limpa o buffer de entrada após scanf
+                getchar();
                 editar_texto(nome_arquivo_para_editar, key);
                 break;
             }
@@ -200,7 +200,7 @@ int main() {
                 printf("Digite o nome do arquivo ao qual deseja adicionar texto: ");
                 char nome_arquivo_para_adicionar[1024];
                 scanf("%1023s", nome_arquivo_para_adicionar);
-                getchar(); // Limpa o buffer de entrada após scanf
+                getchar();
                 adicionar_texto(nome_arquivo_para_adicionar, key);
                 break;
             }
